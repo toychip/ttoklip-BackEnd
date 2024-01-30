@@ -1,7 +1,7 @@
-package com.api.ttoklip.domain.Login.SignUp.main.dto.request;
+package com.api.ttoklip.domain.login.signup.main.dto.request;
 
 import com.api.ttoklip.domain.common.Category;
-import com.api.ttoklip.domain.Login.SignUp.image.dto.response.ImageResponse;
+import com.api.ttoklip.domain.login.signup.image.dto.response.ImageResponse;
 import lombok.Getter;
 
 

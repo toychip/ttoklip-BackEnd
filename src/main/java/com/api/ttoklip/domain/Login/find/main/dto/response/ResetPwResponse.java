@@ -1,13 +1,14 @@
-package com.api.ttoklip.domain.login.signup.main.dto.response;
+package com.api.ttoklip.domain.login.find.main.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.extern.jackson.Jacksonized;
 
 @Getter
 @Builder
 @AllArgsConstructor
-public class SignUpResponse {
+@Jacksonized
+public class ResetPwResponse {
     private String message;
-    private long userId;
 }

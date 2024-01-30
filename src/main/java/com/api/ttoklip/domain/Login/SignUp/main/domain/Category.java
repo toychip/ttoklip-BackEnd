@@ -1,4 +1,4 @@
-package com.api.ttoklip.domain.Login.SignUp.main.domain;
+package com.api.ttoklip.domain.login.signup.main.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

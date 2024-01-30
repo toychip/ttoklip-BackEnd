@@ -1,7 +1,7 @@
-package com.api.ttoklip.domain.Login.SignUp.main.service;
+package com.api.ttoklip.domain.login.signup.main.service;
 
-import com.api.ttoklip.domain.Login.SignUp.main.dto.request.SignUpCondition;
-import com.api.ttoklip.domain.Login.SignUp.main.dto.response.SignUpResponse;
+import com.api.ttoklip.domain.login.signup.main.dto.request.SignUpCondition;
+import com.api.ttoklip.domain.login.signup.main.dto.response.SignUpResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

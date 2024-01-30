@@ -1,11 +1,12 @@
 package com.api.ttoklip.domain.login.main.oauth.principal;
 
+import com.api.ttoklip.domain.member.domain.Member;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import java.lang.reflect.Member;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;

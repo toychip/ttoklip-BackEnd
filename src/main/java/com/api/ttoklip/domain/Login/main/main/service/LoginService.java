@@ -13,11 +13,5 @@ public class LoginService {
     public LoginResponse login(LoginCondition loginCondition){
         return null;
     }
-    public LoginResponse kakaoLogin(){
-        return null;
-    }
-    public LoginResponse naverLogin(){
-        return null;
-    }
     public LogoutResponse logout(LogoutCondition logoutCondition){return null;}
 }

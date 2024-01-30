@@ -59,37 +59,4 @@ public class LoginController {
         return new SuccessResponse<>(loginService.logout(logoutCondition));
     }
 
-    @Operation(summary = "카카오 로그인 API",
-            description = "카카오톡 로그인을 실행합니다.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "로그인 성공",
-                    content = @Content(
-                            mediaType = "application/json",
-                            schema = @Schema(implementation = SuccessResponse.class),
-                            examples = @ExampleObject(
-                                    name = "SuccessResponse",
-                                    value = LoginResponseConstant.kakaoSuccessResponse,
-                                    description = "로그인 성공 시 응답"
-                            )))})
-    @PostMapping("/kakaologin")
-    public SuccessResponse<> kakaoLogin() {
-
-    }
-
-    @Operation(summary = "네이버 로그인 API",
-            description = "네이버 로그인을 실행합니다.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "로그인 성공",
-                    content = @Content(
-                            mediaType = "application/json",
-                            schema = @Schema(implementation = SuccessResponse.class),
-                            examples = @ExampleObject(
-                                    name = "SuccessResponse",
-                                    value = LoginResponseConstant.naverSuccessResponse,
-                                    description = "로그인 성공 시 응답"
-                            )))})
-    @PostMapping("/naverlogin")
-    public SuccessResponse<> naverLogin() {
-
-    }
 }

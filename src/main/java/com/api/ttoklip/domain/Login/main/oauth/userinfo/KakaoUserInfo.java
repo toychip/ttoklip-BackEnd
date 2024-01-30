@@ -1,4 +1,4 @@
-package com.api.ttoklip.domain.login.main.userinfo;
+package com.api.ttoklip.domain.login.main.oauth.userinfo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

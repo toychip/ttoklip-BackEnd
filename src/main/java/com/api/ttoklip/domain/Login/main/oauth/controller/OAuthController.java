@@ -1,9 +1,10 @@
 package com.api.ttoklip.domain.login.main.oauth.controller;
 
-import com.api.ttoklip.domain.login.main.main.constant.LoginResponseConstant;
 import com.api.ttoklip.domain.login.main.main.dto.request.LogoutCondition;
+import com.api.ttoklip.domain.login.main.main.dto.response.LoginResponse;
 import com.api.ttoklip.domain.login.main.main.dto.response.LogoutResponse;
 import com.api.ttoklip.domain.login.main.main.service.LoginService;
+import com.api.ttoklip.domain.login.main.oauth.constant.OAuthConstant;
 import com.api.ttoklip.global.success.SuccessResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -33,7 +34,7 @@ public class OAuthController {
                             schema = @Schema(implementation = SuccessResponse.class),
                             examples = @ExampleObject(
                                     name = "SuccessResponse",
-                                    value = LoginResponseConstant.logoutSuccessResponse,
+                                    value = OAuthConstant.logoutSuccessResponse,
                                     description = "로그아웃 성공 시 응답"
                             )))})
     @PostMapping("/logout")
@@ -50,11 +51,12 @@ public class OAuthController {
                             schema = @Schema(implementation = SuccessResponse.class),
                             examples = @ExampleObject(
                                     name = "SuccessResponse",
-                                    value = LoginResponseConstant.kakaoSuccessResponse,
+                                    value = OAuthConstant.kakaoSuccessResponse,
                                     description = "로그인 성공 시 응답"
                             )))})
     @PostMapping("/kakaologin")
-    public SuccessResponse<> kakaoLogin() {
+    public SuccessResponse<LoginResponse> kakaoLogin() {
+        return null;//후에 수정 예정
 
     }
 
@@ -67,11 +69,11 @@ public class OAuthController {
                             schema = @Schema(implementation = SuccessResponse.class),
                             examples = @ExampleObject(
                                     name = "SuccessResponse",
-                                    value = LoginResponseConstant.naverSuccessResponse,
+                                    value = OAuthConstant.naverSuccessResponse,
                                     description = "로그인 성공 시 응답"
                             )))})
     @PostMapping("/naverlogin")
-    public SuccessResponse<> naverLogin() {
-
+    public SuccessResponse<LoginResponse> naverLogin() {
+        return null;//후에 수정 예정
     }
 }

@@ -30,31 +30,4 @@ public class LoginResponseConstant {
         }
         """;
 
-    public static final String kakaoSuccessResponse = """
-        {
-            "time": "2024-01-11T16:06:30.852Z",
-            "status": 200,
-            "code": "200",
-            "message": "카카오 로그인 성공",
-            "result": {
-                "userId": "kakao123",
-                "userName": "KakaoUser",
-                "userEmail": "kakao.user@example.com"
-            }
-        }
-        """;
-
-    public static final String naverSuccessResponse = """
-        {
-            "time": "2024-01-11T16:06:30.852Z",
-            "status": 200,
-            "code": "200",
-            "message": "네이버 로그인 성공",
-            "result": {
-                "userId": "naver123",
-                "userName": "NaverUser",
-                "userEmail": "Naver.user@example.com"
-            }
-        }
-        """;
 }

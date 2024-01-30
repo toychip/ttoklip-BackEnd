@@ -1,7 +1,7 @@
-package com.api.ttoklip.domain.login.main.service;
+package com.api.ttoklip.domain.login.main.oauth.service;
 
-import com.api.ttoklip.domain.login.main.userinfo.OAuth2UserInfo;
-import com.api.ttoklip.domain.login.main.userinfo.OAuthUserInfoFactory;
+import com.api.ttoklip.domain.login.main.oauth.userinfo.OAuth2UserInfo;
+import com.api.ttoklip.domain.login.main.oauth.userinfo.OAuthUserInfoFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -27,8 +27,9 @@ public class OauthService extends DefaultOAuth2UserService {
         OAuth2UserInfo oAuth2UserInfo = OAuthUserInfoFactory.getOAuthUserInfo(provider,oAuth2User.getAttributes());
         //회원가입 유무 확인
         //Optional<Member> member=memberRepository.find
-        if(member.isEmpty()){
+        /*if(member.isEmpty()){
             Member newMember=Member.builder()
-        }
+        }*/
+        return null;
     }
 }

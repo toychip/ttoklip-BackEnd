@@ -16,6 +16,20 @@ public class LoginResponseConstant {
         }
         """;
 
+    public static final String logoutSuccessResponse = """
+        {
+            "time": "2024-01-11T16:10:45.123Z",
+            "status": 200,
+            "code": "200",
+            "message": "로그아웃 성공",
+            "result": {
+                "userId": 123,
+                "username": "john_doe",
+                "message": "로그아웃 되었습니다."
+            }
+        }
+        """;
+
     public static final String kakaoSuccessResponse = """
         {
             "time": "2024-01-11T16:06:30.852Z",

@@ -1,7 +1,9 @@
 package com.api.ttoklip.domain.Login.main.service;
 
 import com.api.ttoklip.domain.Login.main.dto.request.LoginCondition;
+import com.api.ttoklip.domain.Login.main.dto.request.LogoutCondition;
 import com.api.ttoklip.domain.Login.main.dto.response.LoginResponse;
+import com.api.ttoklip.domain.Login.main.dto.response.LogoutResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,5 @@ public class LoginService {
     public LoginResponse naverLogin(){
         return null;
     }
+    public LogoutResponse logout(LogoutCondition logoutCondition){return null;}
 }

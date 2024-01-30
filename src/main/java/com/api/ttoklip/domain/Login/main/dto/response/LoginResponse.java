@@ -18,6 +18,8 @@ public class LoginResponse {
     @Schema(description = "유저 닉네임", example = "유저1")
     private String userNickname;
 
+    private String message;
+
     @Schema(description = "프로필 이미지 주소")
     private String profileImgUrl;
 

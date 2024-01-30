@@ -2,7 +2,9 @@ package com.api.ttoklip.domain.Login.main.controller;
 
 import com.api.ttoklip.domain.Login.main.constant.LoginResponseConstant;
 import com.api.ttoklip.domain.Login.main.dto.request.LoginCondition;
+import com.api.ttoklip.domain.Login.main.dto.request.LogoutCondition;
 import com.api.ttoklip.domain.Login.main.dto.response.LoginResponse;
+import com.api.ttoklip.domain.Login.main.dto.response.LogoutResponse;
 import com.api.ttoklip.domain.Login.main.service.LoginService;
 import com.api.ttoklip.global.success.SuccessResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,6 +41,22 @@ public class LoginController {
     @PostMapping("/login")
     public SuccessResponse<LoginResponse> login(@RequestBody LoginCondition loginCondition) {
         return new SuccessResponse<>(loginService.login(loginCondition));
+    }
+    @Operation(summary = "로그아웃 API",
+            description = "사용자의 로그아웃을 처리합니다")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "로그아웃 성공",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = SuccessResponse.class),
+                            examples = @ExampleObject(
+                                    name = "SuccessResponse",
+                                    value = LoginResponseConstant.logoutSuccessResponse,
+                                    description = "로그아웃 성공 시 응답"
+                            )))})
+    @PostMapping("/logout")
+    public SuccessResponse<LogoutResponse> login(@RequestBody LogoutCondition logoutCondition) {
+        return new SuccessResponse<>(loginService.logout(logoutCondition));
     }
 
     @Operation(summary = "카카오 로그인 API",

@@ -10,13 +10,10 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Member;
-import java.util.Optional;
-
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class OauthService extends DefaultOAuth2UserService {
+public class CustomOauth2Service extends DefaultOAuth2UserService {
     public OAuth2User loadUser(OAuth2UserRequest request)throws OAuth2AuthenticationException{
 
         OAuth2User oAuth2User = super.loadUser(request);

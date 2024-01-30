@@ -10,11 +10,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 @Data
-public class OAuthUser implements OAuth2User {
+public class CustomOAuth2User implements OAuth2User {
     private Member user;
     private Map<String, Object> attributes;
 
-    public OAuthUser(Member user, Map<String, Object> attributes){
+    public CustomOAuth2User(Member user, Map<String, Object> attributes){
         this.user=user;
         this.attributes=attributes;
     }

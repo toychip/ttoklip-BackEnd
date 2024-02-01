@@ -11,8 +11,10 @@ import lombok.Getter;
 public class LoginResponse {
     @Schema(description = "유저 인덱스", example = "1")
     private Long userId;
-
     @Schema(description = "이메일", example = "user1@gmail.com")
+    private String userEmail;
+
+    @Schema(description = "아이디", example = "psae0714")
     private String userAuth;
 
     @Schema(description = "유저 닉네임", example = "유저1")

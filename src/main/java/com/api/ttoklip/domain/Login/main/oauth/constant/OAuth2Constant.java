@@ -1,6 +1,6 @@
 package com.api.ttoklip.domain.login.main.oauth.constant;
 
-public class CustomOAuth2Constant {
+public class OAuth2Constant {
     public static final String logoutSuccessResponse = """
         {
             "time": "2024-01-11T16:10:45.123Z",

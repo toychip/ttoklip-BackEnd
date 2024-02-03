@@ -58,6 +58,14 @@ public class HoneytipCommentService {
     public void edit(final Long commentId, final CommentEditRequest commentEditRequest) {
     }
 
+
+    /* -------------------------------------------- DELETE -------------------------------------------- */
+
     public void delete(final Long commentId) {
+        // ToDo 본인이 썼는지 검증 과정 필요
+        commentService.deleteById(commentId);
     }
+
+    /* -------------------------------------------- DELETE 끝 -------------------------------------------- */
+
 }

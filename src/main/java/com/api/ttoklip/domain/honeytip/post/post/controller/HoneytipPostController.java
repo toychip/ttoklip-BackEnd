@@ -78,5 +78,4 @@ public class HoneytipPostController {
 		return new SuccessResponse<>(honeytipPostService.delete(postId));
 	}
 
-
 }

@@ -9,17 +9,20 @@ import com.api.ttoklip.domain.honeytip.post.post.domain.Honeytip;
 import com.api.ttoklip.domain.honeytip.post.post.service.HoneytipPostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class HoneytipCommentService {
 
     private final HoneytipPostService honeytipPostService;
     private final CommentService commentService;
 
     /* -------------------------------------------- CREATE -------------------------------------------- */
+    @Transactional
     public Long register(final Long postId, final CommentCreateRequest request) {
         return null;
         Honeytip findHoneytip = honeytipPostService.findHoneytipById(postId);
@@ -60,7 +63,7 @@ public class HoneytipCommentService {
 
 
     /* -------------------------------------------- DELETE -------------------------------------------- */
-
+    @Transactional
     public void delete(final Long commentId) {
         // ToDo 본인이 썼는지 검증 과정 필요
         commentService.deleteById(commentId);

@@ -2,6 +2,8 @@ package com.api.ttoklip.domain.honeytip.post.post.domain;
 
 import com.api.ttoklip.domain.common.Category;
 import com.api.ttoklip.domain.common.base.BaseEntity;
+import com.api.ttoklip.domain.common.report.domain.Report;
+import com.api.ttoklip.domain.honeytip.comment.domain.HoneytipComment;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Where;
@@ -34,6 +36,13 @@ public class Honeytip extends BaseEntity {
     @OneToMany(mappedBy = "honeytip", cascade = CascadeType.ALL)
     private List<HoneytipUrl> honeytipUrlList = new ArrayList<>();
 
+    @Builder.Default
+    @OneToMany(mappedBy = "honeytip", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Report> reports = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "honeytip", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<HoneytipComment> honeytipComments = new ArrayList<>();
 
     @Builder
     public Honeytip(String title, String content, Category category, List<HoneytipImage> honeytipImageList, List<HoneytipUrl> honeytipUrlList) {

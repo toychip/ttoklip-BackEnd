@@ -6,6 +6,7 @@ import com.api.ttoklip.domain.honeytip.post.post.domain.Honeytip;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DiscriminatorValue(value = "Honeytip")
 public class HoneytipComment extends Comment {
+
+    @Builder
+    private QuestionComment(String content, Comment parent, Honeytip honeytip) {
+        super(content, parent); // Comment 클래스의 생성자 호출
+    }
 
     public static HoneytipComment withParentOf(final CommentCreateRequest request, final Comment parent,
                                                final Honeytip honeytip) {

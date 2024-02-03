@@ -67,7 +67,7 @@ public class HoneytipCommentService {
 
     /* -------------------------------------------- UPDATE 끝 -------------------------------------------- */
 
-    
+
     /* -------------------------------------------- DELETE -------------------------------------------- */
     @Transactional
     public void delete(final Long commentId) {

@@ -58,10 +58,16 @@ public class HoneytipCommentService {
 
     /* -------------------------------------------- CREATE 끝 -------------------------------------------- */
 
-    public void edit(final Long commentId, final CommentEditRequest commentEditRequest) {
+
+    /* -------------------------------------------- UPDATE -------------------------------------------- */
+    @Transactional
+    public void edit(final Long commentId, final CommentEditRequest request) {
+        commentService.edit(commentId, request);
     }
 
+    /* -------------------------------------------- UPDATE 끝 -------------------------------------------- */
 
+    
     /* -------------------------------------------- DELETE -------------------------------------------- */
     @Transactional
     public void delete(final Long commentId) {

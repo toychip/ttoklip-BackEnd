@@ -54,7 +54,7 @@ public class TermService {
             return Message.registerPostSuccess(Term.class, termId);
 
         }else{
-            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+            throw new ApiException(ErrorType.UNAUTHORIZED_ROLE_MANAGER);
         }
     }
 
@@ -96,7 +96,7 @@ public class TermService {
 
             return Message.editPostSuccess(Term.class, term.getId());
         }else{
-            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+            throw new ApiException(ErrorType.UNAUTHORIZED_ROLE_MANAGER);
         }
         // ToDO Validate currentMember
 

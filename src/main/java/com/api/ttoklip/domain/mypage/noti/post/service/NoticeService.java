@@ -51,7 +51,7 @@ public class NoticeService {
             Long noticeId = notice.getId();
             return Message.registerPostSuccess(Notice.class, noticeId);
         }else {
-            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+            throw new ApiException(ErrorType.UNAUTHORIZED_ROLE_MANAGER);
         }
     }
 
@@ -90,7 +90,7 @@ public class NoticeService {
             notice.deactivate();
             return Message.deletePostSuccess(Notice.class, noticeId);
         }else{
-            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+            throw new ApiException(ErrorType.UNAUTHORIZED_ROLE_MANAGER);
         }
 
     }
@@ -110,7 +110,7 @@ public class NoticeService {
 
             return Message.editPostSuccess(Notice.class, notice.getId());//message후에 추가
         }else{
-            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+            throw new ApiException(ErrorType.UNAUTHORIZED_ROLE_MANAGER);
         }
         // title, content 수정
     }

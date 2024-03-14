@@ -96,7 +96,6 @@ public enum ErrorType {
     _USER_NOT_FOUND_BY_TOKEN(NOT_FOUND, "USER_4040", "제공된 토큰으로 사용자를 찾을 수 없습니다."),
     _UNAUTHORIZED(UNAUTHORIZED, "USER_4010", "로그인되지 않은 상태입니다."),
     _USER_NOT_FOUND_DB(NOT_FOUND, "USER_4041", "존재하지 않는 회원입니다."),
-    _USER_NOT_ALLOWED(NOT_FOUND, "USER_4030", "허용되지 않은 회원입니다."),
 
 
     // ------------------------------------------ LIKE ------------------------------------------
@@ -111,6 +110,7 @@ public enum ErrorType {
     UNAUTHORIZED_EDIT_POST(FORBIDDEN, "AUTH_4031", "게시글의 작성자만 수정할 수 있습니다."),
     UNAUTHORIZED_DELETE_COMMENT(FORBIDDEN, "AUTH_4032", "댓글의 작성자만 삭제할 수 있습니다."),
     UNAUTHORIZED_CANCEL_LIKE(FORBIDDEN, "AUTH_4033", "좋아요한 사용자만 본인의 좋아요를 취소할 수 있습니다."),
+    UNAUTHORIZED_ROLE_MANAGER(FORBIDDEN, "USER_4030", "관리자 권환이 없는 회원입니다."),
 
 
     // ------------------------------------------ Privacy ------------------------------------------

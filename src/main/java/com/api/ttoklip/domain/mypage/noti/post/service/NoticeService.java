@@ -1,5 +1,8 @@
 package com.api.ttoklip.domain.mypage.noti.post.service;
 
+import com.api.ttoklip.domain.member.domain.Member;
+import com.api.ttoklip.domain.member.domain.Role;
+import com.api.ttoklip.domain.member.service.MemberService;
 import com.api.ttoklip.domain.mypage.noti.post.domain.NoticeRepository;
 import com.api.ttoklip.domain.mypage.noti.post.domain.Notice;
 import com.api.ttoklip.domain.mypage.noti.post.domain.NoticePagingRepository;
@@ -9,6 +12,8 @@ import com.api.ttoklip.domain.mypage.noti.post.dto.response.NoticePaging;
 import com.api.ttoklip.domain.mypage.noti.post.dto.response.NoticeResponse;
 import com.api.ttoklip.domain.mypage.noti.post.dto.response.NoticeSingleResponse;
 import com.api.ttoklip.domain.mypage.noti.post.editor.NoticePostEditor;
+import com.api.ttoklip.global.exception.ApiException;
+import com.api.ttoklip.global.exception.ErrorType;
 import com.api.ttoklip.global.success.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,6 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.api.ttoklip.global.util.SecurityUtil.getCurrentMember;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -25,6 +32,7 @@ public class NoticeService {
 
     private final NoticeRepository noticeRepository;
     private final NoticePagingRepository noticePagingRepository;
+    private final MemberService memberService;
 
     /* -------------------------------------------- COMMON -------------------------------------------- */
     public Notice findNoticeById(final Long noticeId) {
@@ -82,14 +90,17 @@ public class NoticeService {
 
         // 기존 게시글 찾기
         Notice notice = findNoticeById(noticeId);
-
+        Member member = memberService.findByIdWithProfile(getCurrentMember().getId());
         // ToDO Validate currentMember
+        if(member.getRole()== Role.MANAGER){
+            NoticePostEditor noticePostEditor = getPostEditor(request, notice);
+            notice.edit(noticePostEditor);
 
+            return Message.editPostSuccess(Notice.class, notice.getId());//message후에 추가
+        }else{
+            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+        }
         // title, content 수정
-        NoticePostEditor noticePostEditor = getPostEditor(request, notice);
-        notice.edit(noticePostEditor);
-
-        return Message.editPostSuccess(Notice.class, notice.getId());//message후에 추가
     }
 
     private NoticePostEditor getPostEditor(final NoticeEditRequest request, final Notice notice) {

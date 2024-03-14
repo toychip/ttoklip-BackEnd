@@ -44,6 +44,10 @@ public class SecurityConfig {
                                         ,"/api/v1/auth"
                                         ,"/error"
                                 ).permitAll()
+                                .requestMatchers(
+                                        "/api/v1/notice/manger/**"
+                                        ,"/api/v1/term/manager/**"
+                                ).hasRole("MANAGER")
                                 .anyRequest().authenticated());
 //        http.exceptionHandling(e -> e.accessDeniedHandler(tokenErrorHandler));
         http.exceptionHandling()

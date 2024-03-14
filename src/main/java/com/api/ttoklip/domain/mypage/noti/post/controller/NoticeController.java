@@ -63,7 +63,7 @@ public class NoticeController {
                                     value = NotiConstant.createNoticeResponse,
                                     description = "공지사항이 생성되었습니다"
                             )))})
-    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/manager/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public SuccessResponse<Message> register(final @Validated @RequestBody NoticeCreateRequest request) {
         Message message = noticeService.register(request);
         return new SuccessResponse<>(message);
@@ -97,7 +97,7 @@ public class NoticeController {
                                     value = NotiConstant.deleteNoticeResponse,
                                     description = "공지사항을 삭제하였습니다"
                             )))})
-    @DeleteMapping("/{noticeId}")
+    @DeleteMapping("/manager/{noticeId}")
     public SuccessResponse<Message> deleteNotice(final @PathVariable Long noticeId) {
         Message message = noticeService.deleteNotice(noticeId);
         return new SuccessResponse<>(message);
@@ -114,7 +114,7 @@ public class NoticeController {
                                     value = NotiConstant.updateNoticeResponse,
                                     description = "공지사항이 수정되었습니다."
                             )))})
-    @PatchMapping("/{noticeId}")
+    @PatchMapping("/manager/{noticeId}")
     public SuccessResponse<Message> edit(final @PathVariable Long noticeId, final @RequestBody NoticeEditRequest request) {
         Message message = noticeService.edit(noticeId, request);
         return new SuccessResponse<>(message);

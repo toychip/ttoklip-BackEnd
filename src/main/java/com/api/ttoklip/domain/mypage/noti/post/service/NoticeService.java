@@ -44,12 +44,17 @@ public class NoticeService {
     /* -------------------------------------------- CREATE -------------------------------------------- */
     @Transactional
     public Message register(final NoticeCreateRequest request) {
-
-        Notice notice = Notice.of(request);
-        noticeRepository.save(notice);
-        Long noticeId = notice.getId();
-        return Message.registerPostSuccess(Notice.class, noticeId);
+        Member member = memberService.findByIdWithProfile(getCurrentMember().getId());
+        if(member.getRole()==Role.MANAGER){
+            Notice notice = Notice.of(request);
+            noticeRepository.save(notice);
+            Long noticeId = notice.getId();
+            return Message.registerPostSuccess(Notice.class, noticeId);
+        }else {
+            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+        }
     }
+
 
     /* -------------------------------------------- CREATE 끝 -------------------------------------------- */
     public NoticeResponse getSingleNotice(final Long noticeId) {//하나 조회
@@ -77,10 +82,17 @@ public class NoticeService {
 
     /* -------------------------------------------- DELETE  -------------------------------------------- */
     @Transactional
-    public Message deleteNotice(final Long noticeId) {//소프트삭제 구현
-        Notice notice = findNoticeById(noticeId);
-        notice.deactivate();
-        return Message.deletePostSuccess(Notice.class, noticeId);
+    public Message deleteNotice(final Long noticeId) {
+        //소프트삭제 구현
+        Member member = memberService.findByIdWithProfile(getCurrentMember().getId());
+        if(member.getRole()==Role.MANAGER){
+            Notice notice = findNoticeById(noticeId);
+            notice.deactivate();
+            return Message.deletePostSuccess(Notice.class, noticeId);
+        }else{
+            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+        }
+
     }
     /* -------------------------------------------- DELETE 끝   -------------------------------------------- */
 

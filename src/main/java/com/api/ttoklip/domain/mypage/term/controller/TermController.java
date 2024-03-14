@@ -82,7 +82,7 @@ public class TermController {
                                     value = TermConstant.updateTermsAndPolicy,
                                     description = "이용약관을 수정했습니다"
                             )))})
-    @PatchMapping("/{termId}")
+    @PatchMapping("/manager/{termId}")
     public SuccessResponse<Message> edit(final @PathVariable Long termId, final @RequestBody TermEditRequest request) {
         Message message = termService.edit(termId, request);
         return new SuccessResponse<>(message);
@@ -99,7 +99,7 @@ public class TermController {
                                     value = TermConstant.createTermAndPolicy,
                                     description = "이용약관을 생성했습니다"
                             )))})
-    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/manager/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public SuccessResponse<Message> register(final @Validated @RequestBody TermCreateRequest request) {
         Message message = termService.register(request);
         return new SuccessResponse<>(message);

@@ -1,5 +1,9 @@
 package com.api.ttoklip.domain.mypage.term.service;
 
+import com.api.ttoklip.domain.member.domain.Member;
+import com.api.ttoklip.domain.member.domain.Role;
+import com.api.ttoklip.domain.member.repository.MemberRepository;
+import com.api.ttoklip.domain.member.service.MemberService;
 import com.api.ttoklip.domain.mypage.term.domain.Term;
 import com.api.ttoklip.domain.mypage.term.domain.TermPaginRepository;
 import com.api.ttoklip.domain.mypage.term.domain.TermRepository;
@@ -20,12 +24,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.api.ttoklip.global.util.SecurityUtil.getCurrentMember;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class TermService {
     private final TermRepository termRepository;
     private final TermPaginRepository termPaginRepository;
+    private final MemberService memberService;
 
     /* -------------------------------------------- COMMON -------------------------------------------- */
     public Term findTermById(final Long termId) {
@@ -38,12 +45,17 @@ public class TermService {
     /* -------------------------------------------- CREATE -------------------------------------------- */
     @Transactional
     public Message register(final TermCreateRequest request) {
+        Member member = memberService.findByIdWithProfile(getCurrentMember().getId());
+        if(member.getRole()== Role.MANAGER){
+            Term term = Term.of(request);
+            termRepository.save(term);
+            Long termId = term.getId();
 
-        Term term = Term.of(request);
-        termRepository.save(term);
-        Long termId = term.getId();
+            return Message.registerPostSuccess(Term.class, termId);
 
-        return Message.registerPostSuccess(Term.class, termId);
+        }else{
+            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+        }
     }
 
     /* -------------------------------------------- CREATE 끝 -------------------------------------------- */
@@ -77,14 +89,19 @@ public class TermService {
 
         // 기존 게시글 찾기
         Term term = findTermById(termId);
+        Member member = memberService.findByIdWithProfile(getCurrentMember().getId());
+        if(member.getRole()==Role.MANAGER){
+            TermEditor termEditor = getEditor(request, term);
+            term.edit(termEditor);
 
+            return Message.editPostSuccess(Term.class, term.getId());
+        }else{
+            throw new ApiException(ErrorType._USER_NOT_ALLOWED);
+        }
         // ToDO Validate currentMember
 
         // title, content 수정
-        TermEditor termEditor = getEditor(request, term);
-        term.edit(termEditor);
 
-        return Message.editPostSuccess(Term.class, term.getId());
     }
 
     private TermEditor getEditor(final TermEditRequest request, final Term term) {
